@@ -1,0 +1,15 @@
+language {
+  #languages {
+    li {
+      padding: $gap2;
+      border-bottom: $borderLine;
+      text-align: center;
+      background-color: #fff;
+
+      &.active {
+        background-color: $color2;
+        color: #fff;
+      }
+    }
+  }
+}

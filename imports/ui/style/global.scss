@@ -1,0 +1,85 @@
+html, body {
+    height: 100%;
+}
+
+body {
+	font-family: Regular;
+    line-height: 1.4;
+    font-size: $fontSize + px;
+}
+
+input, textarea, select {
+    border: 0;
+    border-bottom: $borderLine;
+    vertical-align: middle;
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+    @extend .box-sizing;
+    background-color: #fff;
+    padding: $gap1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+        outline-width: 0;
+
+        &:not(select) {
+            border-bottom: 1px solid $color2;
+        }
+
+        &.no-style {
+            border-bottom: 0;
+            background-color: transparent;
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+ color: $darkGrey;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: $darkGrey;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: $darkGrey;
+}
+
+:-ms-input-placeholder {
+    color: $darkGrey;
+}
+
+header {
+    background-color: #fff;
+    height: $headerHeight;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    @extend .shadow2;
+    @include transition(all 0.5s ease-in-out);
+
+    .btn {
+        float: left;
+        height: 100%;
+        line-height: $headerHeight;
+        width: 58px;
+        text-align: center;
+
+        &.text {
+            text-align: left;
+            width: auto;
+        }
+
+        &.right {
+            float: right;
+        }
+
+        span {
+            vertical-align: middle;
+        }
+    }
+}

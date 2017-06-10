@@ -1,0 +1,2 @@
+On settings file you will have your constants. You can also declare here environment variables if you want to.
+In order to run Meteor with this file you have to use "meteor run --settings ./imports/settings.json"

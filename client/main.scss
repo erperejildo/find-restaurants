@@ -1,0 +1,14 @@
+body {
+  background-color: #f9f9f9;
+}
+
+// import here scss files from general components
+
+@import "../imports/ui/style/vars";
+@import "../imports/ui/style/mixins";
+@import "../imports/ui/style/fonts";
+@import "../imports/ui/style/reset";
+@import "../imports/ui/style/global";
+@import "../imports/ui/components/myApp/myApp";
+@import "../imports/ui/components/language/language";
+@import "../imports/ui/components/loadingScreen/loadingScreen";

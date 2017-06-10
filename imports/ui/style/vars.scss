@@ -1,0 +1,29 @@
+// change this one in croppie.scss
+$color1: #3B596A;
+$color2: #A1CD73;
+$lightGrey: #EEE;
+$normalGrey: #DDD;
+$darkGrey: grey;
+$bezier: cubic-bezier(.175, .885, .32, 1.275);
+
+// Size in EM if the property scales according to it’s font-size
+// Size everything else in REM
+$fontSize: 16;
+$headerHeight: 3rem;
+$footerHeight: 3rem;
+
+@function toRem($val){
+  @return ($val / $fontSize) + 0rem;
+}
+@function toEm($val){
+  @return ($val / $fontSize) + 0em;
+}
+
+$gap1: toRem(15);
+$gap2: toRem(10);
+$gap3: toRem(5);
+
+$ballSize: toRem(20); // pull refresh
+
+$borderLine: toRem(1) solid #eee;
+$borderActive: toRem(1) solid $color1;

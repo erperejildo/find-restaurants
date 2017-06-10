@@ -1,0 +1,164 @@
+@mixin calc($val1, $val2, $direction) {
+	@if $direction == "height" {
+		height: calc(#{$val1} - #{$val2});
+		height: -moz-calc(#{$val1} - #{$val2});
+	    height: -webkit-calc(#{$val1} - #{$val2});
+	    height: -ms-calc(#{$val1} - #{$val2});
+	    height: -o-calc(#{$val1} - #{$val2});
+ 	} @else if $direction == "width" {
+		width: calc(#{$val1} - #{$val2});
+		width: -moz-calc(#{$val1} - #{$val2});
+	    width: -webkit-calc(#{$val1} - #{$val2});
+	    width: -ms-calc(#{$val1} - #{$val2});
+	    width: -o-calc(#{$val1} - #{$val2});
+	} @else if $direction == "padding-top" {
+		padding-top: calc(#{$val1} - #{$val2});
+		padding-top: -moz-calc(#{$val1} - #{$val2});
+		padding-top: -webkit-calc(#{$val1} - #{$val2});
+		padding-top: -ms-calc(#{$val1} - #{$val2});
+		padding-top: -o-calc(#{$val1} - #{$val2});
+	}
+}
+
+@mixin border-radius($val1, $val2: $val1, $val3: $val1, $val4: $val1) {
+	border-radius: $val1 $val2 $val3 $val4;
+	-webkit-border-radius: $val1 $val2 $val3 $val4;
+	-moz-border-radius: $val1 $val2 $val3 $val4;
+	-ms-border-radius: $val1 $val2 $val3 $val4;
+	-o-border-radius: $val1 $val2 $val3 $val4;
+}
+
+@mixin transform($val) {
+	transform: $val;
+	-webkit-transform: $val;
+	-moz-transform: $val;
+	-ms-transform: $val;
+	-o-transform: $val;
+}
+
+@mixin filter($val) {
+	filter: $val;
+	-webkit-filter: $val;
+	-moz-filter: $val;
+	-ms-filter: $val;
+	-o-filter: $val;
+}
+
+@mixin transform-origin($val1, $val2) {
+	transform-origin: $val1 $val2;
+	-webkit-transform-origin: $val1 $val2;
+	-moz-transform-origin: $val1 $val2;
+	-ms-transform-origin: $val1 $val2;
+	-o-transform-origin: $val1 $val2;
+}
+
+@mixin transition($val) {
+    -ms-transition:     $val;
+    -moz-transition:    $val;
+    -o-transition:      $val;
+    -webkit-transition: $val;
+    transition:         $val;
+}
+
+@mixin animation($val) {
+	animation: $val;
+	-webkit-animation: $val;
+	-moz-animation: $val;
+	-ms-animation: $val;
+	-o-animation: $val;
+}
+
+@mixin text-shadow($val) {
+	text-shadow: $val;
+	-moz-text-shadow: $val;
+	-o-text-shadow: $val;
+	-webkit-text-shadow: $val;
+}
+
+@mixin box-shadow($val) {
+	box-shadow: $val;
+	-moz-box-shadow: $val;
+	-o-box-shadow: $val;
+	-webkit-box-shadow: $val;
+}
+
+$shadow1: 0 1px 3px rgba(116,116,116,0.12), 0 1px 2px rgba(116,116,116,0.24); 
+.shadow1 {
+	@include box-shadow($shadow1);
+}
+
+$shadow2: 0 3px 6px rgba(116,116,116,0.16), 0 3px 6px rgba(116,116,116,0.23); 
+.shadow2 {
+	@include box-shadow($shadow2);
+}
+
+$shadow3: 0 10px 20px rgba(116,116,116,0.19), 0 6px 6px rgba(116,116,116,0.23); 
+.shadow3 {
+	@include box-shadow($shadow3);
+}
+
+$shadow4: 0 14px 28px rgba(116,116,116,0.25), 0 10px 10px rgba(116,116,116,0.22); 
+.shadow4 {
+	@include box-shadow($shadow4);
+}
+
+$shadow5: 0 19px 38px rgba(116,116,116,0.30), 0 15px 12px rgba(116,116,116,0.22);
+.shadow5 {
+	@include box-shadow($shadow5);
+}
+
+.centered-v {
+	position: absolute;
+	top: 50%;
+	@include transform(translate(0,-50%));
+}
+
+.centered-h {
+	position: absolute;
+	left: 50%;
+	@include transform(translate(-50%,0));
+}
+
+.centered {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include transform(translate(-50%,-50%));
+}
+
+.margin1 {
+	margin: $gap1;
+}
+
+.margin2 {
+	margin: $gap2;
+}
+
+.margin3 {
+	margin: $gap3;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-ms-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+.box-sizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
