@@ -45,8 +45,6 @@ class Home {
         // removing spinner
         thatMyApp.loading = false;
 
-
-
         _this.restaurants = response.data.results;
 
         _this.restaurants.map(function(rest) {
@@ -62,9 +60,6 @@ class Home {
             rest.photo = '/images/noimage.jpg';
           }
         });
-
-        console.log(_this.restaurants);
-
       }, function errorCallback(error) {
         thatMyApp.loading = false;
 
