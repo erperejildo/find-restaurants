@@ -1,8 +1,0 @@
-<header class="editing">
-    <div class="btn" ng-click="language.goBack()"><span class="icon-keyboard-left-arrow-button"></span></div>
-    <div class="btn text" translate="language"></div>
-</header>
-
-<ul id="languages">
-    <li ng-class="{'active':lang === language.currentLang}" ng-repeat="lang in language.langs" translate="{{lang}}" ng-click="language.changeLang(lang)"></li>
-</ul>

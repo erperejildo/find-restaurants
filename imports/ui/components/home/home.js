@@ -3,12 +3,30 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from '@uirouter/angularjs';
 import { Meteor } from 'meteor/meteor';
-import { name as Language } from '../language/language';
 
 class Home {
-  constructor($scope, $reactive, $state) {
+  constructor($scope, $reactive, $http) {
     'ngInject';
     $reactive(this).attach($scope);
+
+    that = this;
+
+    $http({
+      method: 'GET',
+      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
+    }).then(function successCallback(response) {
+      that.restaurants = response.data.results;
+      console.log(that.restaurants);
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+
+    this.helpers({
+      restaurants() {
+
+      }
+    });
   }
 }
 
@@ -17,8 +35,7 @@ const name = 'home';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  uiRouter,
-  Language
+  uiRouter
 ])
 .component(name, {
   templateUrl,

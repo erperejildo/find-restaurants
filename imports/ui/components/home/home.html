@@ -1,3 +1,14 @@
-<a href="/language" id="language">{{'language' | translate}} <span class="icon-drop-down-arrow"></span></a>
+<div class="search">Search again</div>
 
-<div class="centered" translate="home_view"></div>
+<div class="rest" ng-repeat="rest in home.restaurants">
+    <img class="close" src="/images/close.svg" />
+    <img class="pic" src="/images/not_loaded.svg" />
+    <ul class="info">
+        <li class="title">{{rest.name}}</li>
+        <li class="rating-price">
+            <div><img class="star" src="/images/star.svg" /> {{rest.rating}}</div>
+            <div><img class="pound" src="/images/pound.svg" /><img class="pound" src="/images/pound.svg" /></div>
+        </li>
+        <li class="address">{{rest.vicinity}}</li>
+    </ul>
+</div>

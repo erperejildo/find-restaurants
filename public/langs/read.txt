@@ -1,2 +1,0 @@
-Find here your json files with the translations. If you need further languages you will need to add only
-a new json file with its translations and add the language on language.js (this.langs = ['en','es'])

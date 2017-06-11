@@ -19,9 +19,7 @@ $footerHeight: 3rem;
   @return ($val / $fontSize) + 0em;
 }
 
-$gap1: toRem(15);
-$gap2: toRem(10);
-$gap3: toRem(5);
+$gap: toRem(10);
 
 $ballSize: toRem(20); // pull refresh
 

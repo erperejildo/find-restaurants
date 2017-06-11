@@ -1,5 +1,0 @@
-Deploy you app easily using this configuration file. On it you will have to add your domain and SSH key
-(you can put it on private if you want). You will also need to install pm2-meteor and pm2 on the server.
-Using pm2 you can monitoring your app and it will restart itself every time some bug appears.
-
-For more info about pm2-meteor go to this link: http://pm2.keymetrics.io/

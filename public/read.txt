@@ -1,2 +1,0 @@
-Here is your public folder and as the name says you will find here all non private elements on your project.
-Most common cases will be images and fonts but we also have langs files.

@@ -1,2 +1,0 @@
-This folder contains files and directories that you don't want to publish.
-No body will have access to this folder.

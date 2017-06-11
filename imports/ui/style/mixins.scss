@@ -126,18 +126,6 @@ $shadow5: 0 19px 38px rgba(116,116,116,0.30), 0 15px 12px rgba(116,116,116,0.22)
 	@include transform(translate(-50%,-50%));
 }
 
-.margin1 {
-	margin: $gap1;
-}
-
-.margin2 {
-	margin: $gap2;
-}
-
-.margin3 {
-	margin: $gap3;
-}
-
 @mixin keyframes($animationName) {
     @-webkit-keyframes #{$animationName} {
         @content;

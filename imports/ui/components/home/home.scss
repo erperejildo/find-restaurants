@@ -1,7 +1,72 @@
 home {
-  #language {
+  padding: $gap;
+  display: block;
+  padding-top: toRem(43);
+
+  .search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
     text-align: center;
-    margin: auto;
-    display: block;
+    background-color: $color2;
+    color: #fff;
+    padding: $gap;
+    @include border-radius(0, 0, toRem(5), toRem(5));
+  }
+}
+
+.rest {
+  overflow: auto;
+  margin: $gap 0;
+  position: relative;
+  @include border-radius(toRem(5));
+  @extend .shadow1;
+
+  .close {
+    position: absolute;
+    right: 4%;
+    top: 0;
+    width: 30%;
+  }
+
+  .pic {
+    width: 100%;
+  }
+
+  .info {
+    margin: $gap;
+    text-align: center;
+
+    li {
+      margin-bottom: $gap;
+    }
+
+    .title {
+      color: $color1;
+      font-size: 1.2rem;
+    }
+
+    .rating-price {
+      font-family: Bold;
+      overflow: auto;
+
+      div:nth-child(1) {
+        float: left;
+      }
+      div:nth-child(2) {
+        float: right;
+      }
+
+      .star, .pound {
+        width: toRem(30);
+        vertical-align: middle;
+      }
+    }
+
+    .address {
+      color: #949191;
+    }
   }
 }

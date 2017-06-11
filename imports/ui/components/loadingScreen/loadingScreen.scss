@@ -21,7 +21,6 @@ loading-screen {
 		background-color: $color2;
 		border-radius: 50%;
 		position: absolute;
-		bottom: $gap2;
 
 		&:nth-child(2) {
 			left: toRem(40);
