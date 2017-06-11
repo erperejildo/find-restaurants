@@ -28,9 +28,10 @@ home {
 
 .rest {
   overflow: auto;
-  margin: $gap 0;
+  margin: $gap auto;
   position: relative;
   background-color: #fff;
+  max-width: toRem(600);
   @include border-radius(toRem(5));
   @extend .shadow1;
 
@@ -39,6 +40,7 @@ home {
     right: 4%;
     top: 0;
     width: 30%;
+    max-width: toRem(100);
   }
 
   .pic {
@@ -83,8 +85,8 @@ home {
   }
 }
 
-// MOBILE
-@media (max-width: 550px) {
+// MOBILE and TABLE
+@media (max-width: $breakpoint) {
   .rest .info .rating-price {
     position: absolute;
     top: 0;
@@ -104,4 +106,24 @@ home {
     }
   }
 }
-// end MOBILE
+// end MOBILE and TABLE
+
+// DESKTOP
+@media (min-width: 550px) {
+  .rest {
+    .pic {
+      float: left;
+      width: 25%;
+      border-right: toRem(3) solid $color2;
+      margin-right: $gap;
+      @include border-radius(0, 0, toRem(5), 0);
+    }
+
+    .info {
+      &.rest-close {
+        padding-right: 21%;
+      }
+    }
+  }
+}
+// end DESKTOP

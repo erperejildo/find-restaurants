@@ -45,21 +45,29 @@ class Home {
         // removing spinner
         thatMyApp.loading = false;
 
-        _this.restaurants = response.data.results;
+        // being a free google account for the API is quite easy to exceed the daily request quota
+        if (!response.data.error_message) {
+          _this.restaurants = response.data.results;
 
-        _this.restaurants.map(function(rest) {
-          if (rest.photos) {
-            const photo = rest.photos[0].photo_reference;
+          _this.restaurants.map(function (rest) {
+            if (rest.photos) {
+              const photo = rest.photos[0].photo_reference;
 
-            if (photo) {
-              rest.photo = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=' + photo + '&key=' + myAPIKey;
+              if (photo) {
+                rest.photo = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=' + photo + '&key=' + myAPIKey;
+              }
             }
-          }
 
-          if (!rest.photo) {
-            rest.photo = '/images/noimage.jpg';
-          }
-        });
+            if (!rest.photo) {
+              rest.photo = '/images/noimage.jpg';
+            }
+          });
+        } else {
+          _this.error = response.data.error_message;
+        }
+
+        console.log(response);
+
       }, function errorCallback(error) {
         thatMyApp.loading = false;
 

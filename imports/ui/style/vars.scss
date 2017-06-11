@@ -6,6 +6,8 @@ $normalGrey: #DDD;
 $darkGrey: grey;
 $bezier: cubic-bezier(.175, .885, .32, 1.275);
 
+$breakpoint: 550px;
+
 // Size in EM if the property scales according to it’s font-size
 // Size everything else in REM
 $fontSize: 16;

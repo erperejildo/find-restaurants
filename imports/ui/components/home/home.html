@@ -1,9 +1,9 @@
 <div class="search" ng-click="home.getRestaurants()" ng-if="!home.noSupport">Search again</div>
 
 <div class="rest" ng-repeat="rest in home.restaurants" ng-if="!home.noGeolocation">
-    <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />
     <img class="pic" ng-src="{{rest.photo}}" />
-    <ul class="info">
+    <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />
+    <ul class="info" ng-class="{'rest-close':rest.opening_hours.open_now}">
         <li class="title">{{rest.name}}</li>
         <li class="rating-price">
             <div><img class="star" src="/images/star.svg" /> {{rest.rating}}</div>
