@@ -1,12 +1,11 @@
-// use this file to configure mobile parameters like icons and splashscreens i.e.
-
 App.info({
-	id: 'com.myUser.myApp',
+	id: 'com.daniel.myApp',
 	name: 'myApp',
 	version: "0.0.1",
-	description: 'This is a project with Angular and Meteor using ES6',
-	author: 'Your Name',
-	email: 'your@email.com'
+	description: 'Find restaurants near you',
+	author: 'Daniel Rodriguez',
+	email: 'd15_1_89@msn.com'
 });
 
 App.setPreference('fullscreen', true);
+App.setPreference('OpenAllWhitelistURLsInWebView', false);
