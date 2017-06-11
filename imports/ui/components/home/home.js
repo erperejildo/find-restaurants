@@ -9,29 +9,13 @@ class Home {
   constructor($scope, $reactive, $http) {
     'ngInject';
     $reactive(this).attach($scope);
-
-    that = this;
-
-    console.log(this.getPos());
+    _http = $http;
+    _this = this;
 
     if (navigator.geolocation) {
-      // displaying loading spinner
-      thatMyApp.loading = true;
-
-      $http({
-        method: 'GET',
-        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
-      }).then(function successCallback(response) {
-        // removing spinner
-        thatMyApp.loading = false;
-        that.restaurants = response.data.results;
-        console.log(that.restaurants);
-      }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
+      this.getRestaurants();
     } else {
-      this.noGeolocation = true;
+      this.error = 'Your browser does not support geolocation';
     }
 
     this.helpers({
@@ -41,9 +25,30 @@ class Home {
     });
   }
 
-  getPos() {
-    navigator.geolocation.getCurrentPosition(function showPos(pos) {
+  getRestaurants() {
+    const myPos = navigator.geolocation.getCurrentPosition(function showPos(pos) {
+      console.log(pos.coords);
       return pos.coords
+    });
+
+    console.log(myPos);
+
+    // displaying loading spinner
+    thatMyApp.loading = true;
+
+    _http({
+      method: 'GET',
+      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
+    }).then(function successCallback(response) {
+      // removing spinner
+      thatMyApp.loading = false;
+
+      _this.restaurants = response.data.results;
+      console.log(_this.restaurants);
+    }, function errorCallback(error) {
+      thatMyApp.loading = false;
+
+      _this.error = 'Something happened :S'
     });
   }
 }
