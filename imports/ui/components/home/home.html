@@ -9,7 +9,6 @@
     <div id="map-canvas"></div>
 </div>
 
-
 <div class="rest" ng-repeat="rest in home.restaurants | orderBy:home.orderBy" ng-if="!home.noGeolocation">
     <img class="pic" ng-src="{{rest.photo}}" />
     <div class="map-text" ng-click="home.showMap(rest.geometry.location.lat, rest.geometry.location.lng)">MAP</div>
