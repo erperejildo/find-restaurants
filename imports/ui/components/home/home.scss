@@ -2,6 +2,7 @@ home {
   padding: $gap;
   display: block;
   padding-top: toRem(43);
+  background-color: #FFFDFB;
 
   .search {
     position: fixed;
@@ -15,12 +16,18 @@ home {
     padding: $gap;
     @include border-radius(0, 0, toRem(5), toRem(5));
   }
+
+  .no-support {
+    width: 80%;
+    text-align: center;
+  }
 }
 
 .rest {
   overflow: auto;
   margin: $gap 0;
   position: relative;
+  background-color: #fff;
   @include border-radius(toRem(5));
   @extend .shadow1;
 

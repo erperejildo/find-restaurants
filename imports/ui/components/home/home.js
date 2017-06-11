@@ -3,6 +3,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from '@uirouter/angularjs';
 import { Meteor } from 'meteor/meteor';
+import { name as Range } from '../../filters/range';
 
 class Home {
   constructor($scope, $reactive, $http) {
@@ -11,21 +12,38 @@ class Home {
 
     that = this;
 
-    $http({
-      method: 'GET',
-      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
-    }).then(function successCallback(response) {
-      that.restaurants = response.data.results;
-      console.log(that.restaurants);
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-    });
+    console.log(this.getPos());
+
+    if (navigator.geolocation) {
+      // displaying loading spinner
+      thatMyApp.loading = true;
+
+      $http({
+        method: 'GET',
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
+      }).then(function successCallback(response) {
+        // removing spinner
+        thatMyApp.loading = false;
+        that.restaurants = response.data.results;
+        console.log(that.restaurants);
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    } else {
+      this.noGeolocation = true;
+    }
 
     this.helpers({
       restaurants() {
 
       }
+    });
+  }
+
+  getPos() {
+    navigator.geolocation.getCurrentPosition(function showPos(pos) {
+      return pos.coords
     });
   }
 }
@@ -35,7 +53,8 @@ const name = 'home';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  uiRouter
+  uiRouter,
+  Range
 ])
 .component(name, {
   templateUrl,
