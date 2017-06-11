@@ -28,16 +28,20 @@ class Home {
     });
   }
 
-  getRestaurants() {
-    var promise = new Promise(function(resolve) {
+  getUserPos() {
+    this.promise = new Promise(function(resolve) {
       // getting user geolocation
       navigator.geolocation.getCurrentPosition(function showPos(pos) {
         _this.myPos = pos.coords;
         resolve(true);
       });
     });
+  }
 
-    promise.then(function() {
+  getRestaurants() {
+    this.getUserPos();
+
+    this.promise.then(function() {
       _http({
         method: 'GET',
         url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + _this.myPos.latitude + ',' + _this.myPos.longitude + '&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
