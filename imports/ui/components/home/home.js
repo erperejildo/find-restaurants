@@ -13,6 +13,9 @@ class Home {
     _this = this;
 
     if (navigator.geolocation) {
+      // displaying loading spinner
+      thatMyApp.loading = true;
+
       this.getRestaurants();
     } else {
       this.error = 'Your browser does not support geolocation';
@@ -26,29 +29,29 @@ class Home {
   }
 
   getRestaurants() {
-    const myPos = navigator.geolocation.getCurrentPosition(function showPos(pos) {
-      console.log(pos.coords);
-      return pos.coords
+    var promise = new Promise(function(resolve) {
+      // getting user geolocation
+      navigator.geolocation.getCurrentPosition(function showPos(pos) {
+        _this.myPos = pos.coords;
+        resolve(true);
+      });
     });
 
-    console.log(myPos);
+    promise.then(function() {
+      _http({
+        method: 'GET',
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + _this.myPos.latitude + ',' + _this.myPos.longitude + '&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
+      }).then(function successCallback(response) {
+        // removing spinner
+        thatMyApp.loading = false;
 
-    // displaying loading spinner
-    thatMyApp.loading = true;
+        _this.restaurants = response.data.results;
+        console.log(_this.restaurants);
+      }, function errorCallback(error) {
+        thatMyApp.loading = false;
 
-    _http({
-      method: 'GET',
-      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.460032899999995,0.004859100000000001&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
-    }).then(function successCallback(response) {
-      // removing spinner
-      thatMyApp.loading = false;
-
-      _this.restaurants = response.data.results;
-      console.log(_this.restaurants);
-    }, function errorCallback(error) {
-      thatMyApp.loading = false;
-
-      _this.error = 'Something happened :S'
+        _this.error = 'Something happened :S'
+      });
     });
   }
 }
