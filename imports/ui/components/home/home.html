@@ -1,4 +1,4 @@
-<div class="search">Search again</div>
+<div class="search" ng-click="home.getRestaurants()" ng-if="!home.noSupport">Search again</div>
 
 <div class="rest" ng-repeat="rest in home.restaurants" ng-if="!home.noGeolocation">
     <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />

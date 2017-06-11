@@ -18,14 +18,9 @@ class Home {
 
       this.getRestaurants();
     } else {
+      this.noSupport = true;
       this.error = 'Your browser does not support geolocation';
     }
-
-    this.helpers({
-      restaurants() {
-
-      }
-    });
   }
 
   getUserPos() {
