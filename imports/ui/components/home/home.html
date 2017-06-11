@@ -2,6 +2,7 @@
 
 <div class="rest" ng-repeat="rest in home.restaurants" ng-if="!home.noGeolocation">
     <img class="pic" ng-src="{{rest.photo}}" />
+    <a class="map" ng-href="/map-route">MAP</a>
     <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />
     <ul class="info" ng-class="{'rest-close':rest.opening_hours.open_now}">
         <li class="title">{{rest.name}}</li>

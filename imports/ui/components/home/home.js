@@ -4,6 +4,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from '@uirouter/angularjs';
 import { Meteor } from 'meteor/meteor';
 import { name as Range } from '../../filters/range';
+import { name as MapRoute } from '../mapRoute/mapRoute';
 
 class Home {
   constructor($scope, $reactive, $http) {
@@ -44,12 +45,16 @@ class Home {
       }).then(function successCallback(response) {
         // removing spinner
         thatMyApp.loading = false;
-
+        // latitude 51.459848199999996
+        // longitude 0.0060482
+// https://maps.googleapis.com/maps/api/directions/json?origin=' + _this.myPos.latitude + ',' + _this.myPos.longitude + '&destination=place_id:ChIJ1W-BYdGp2EcRq6GXnlqcKGU&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc
         // being a free google account for the API is quite easy to exceed the daily request quota
         if (!response.data.error_message) {
           _this.restaurants = response.data.results;
 
           _this.restaurants.map(function (rest) {
+            console.log(rest);
+
             if (rest.photos) {
               const photo = rest.photos[0].photo_reference;
 
@@ -65,9 +70,6 @@ class Home {
         } else {
           _this.error = response.data.error_message;
         }
-
-        console.log(response);
-
       }, function errorCallback(error) {
         thatMyApp.loading = false;
 
@@ -83,7 +85,8 @@ const name = 'home';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  Range
+  Range,
+  MapRoute
 ])
 .component(name, {
   templateUrl,
@@ -96,8 +99,8 @@ export default angular.module(name, [
   $stateProvider.state(name, {
     url: '/home',
     template: '<home></home>',
-    // you can have private components/routes. i.e. this is an only public route
-    // if we would be logged with our user we would be redirected to other route
+    // you can have private components/routes. i.e. this is an only public mapRoute
+    // if we would be logged with our user we would be redirected to other mapRoute
     resolve: {
       currentUser($q) {
         if (Meteor.userId() !== null) {

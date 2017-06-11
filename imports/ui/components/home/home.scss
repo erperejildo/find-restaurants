@@ -16,7 +16,6 @@ home {
     color: #fff;
     padding: $gap;
     cursor: pointer;
-    @include border-radius(0, 0, toRem(5), toRem(5));
     @extend .shadow2;
   }
 
@@ -45,8 +44,22 @@ home {
 
   .pic {
     width: 100%;
-    border-bottom: toRem(3) solid $color2;
     display: block;
+  }
+
+  .map {
+    display: block;
+    background-color: $color2;
+    font-family: Bold;
+    text-align: left;
+    color: #fff;
+    text-align: center;
+    padding: toRem(5) 0;
+
+    background-image: url('/images/route.svg');
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+    background-position: right toRem(5) center;
   }
 
   .info {
@@ -115,8 +128,8 @@ home {
       float: left;
       width: 25%;
       border-right: toRem(3) solid $color2;
+      border-bottom: none;
       margin-right: $gap;
-      @include border-radius(0, 0, toRem(5), 0);
     }
 
     .info {
