@@ -1,6 +1,10 @@
 <div class="search" ng-click="home.getRestaurants()" ng-if="!home.noSupport">Search again</div>
+<ul class="orders">
+    <li>Order by:</li>
+    <li ng-click="home.changeFilter('rating')">Rating <span class="icon-down" ng-show="home.orderBy" ng-class="{'up':home.orderBy === '-rating', 'down':home.orderBy === 'rating'}"></span> </li>
+</ul>
 
-<div class="rest" ng-repeat="rest in home.restaurants" ng-if="!home.noGeolocation">
+<div class="rest" ng-repeat="rest in home.restaurants | orderBy:home.orderBy" ng-if="!home.noGeolocation">
     <img class="pic" ng-src="{{rest.photo}}" />
     <a class="map" ng-href="/map-route">MAP</a>
     <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />

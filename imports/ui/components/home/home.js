@@ -77,6 +77,16 @@ class Home {
       });
     });
   }
+
+  changeFilter() {
+    if (this.orderBy === '-rating') {
+      this.orderBy = 'rating';
+      this.up = false;
+    } else {
+      this.orderBy = '-rating';
+      this.up = true;
+    }
+  }
 }
 
 const name = 'home';

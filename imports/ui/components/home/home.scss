@@ -19,6 +19,16 @@ home {
     @extend .shadow2;
   }
 
+  .orders {
+    margin-top: $gap;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+
   .no-support {
     width: 80%;
     text-align: center;
