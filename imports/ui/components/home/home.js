@@ -37,19 +37,38 @@ class Home {
     this.getUserPos();
 
     this.promise.then(function() {
+      const myAPIKey = 'AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc';
       _http({
         method: 'GET',
-        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + _this.myPos.latitude + ',' + _this.myPos.longitude + '&radius=1500&type=restaurant&key=AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc'
+        url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + _this.myPos.latitude + ',' + _this.myPos.longitude + '&radius=1500&type=restaurant&key=' + myAPIKey
       }).then(function successCallback(response) {
         // removing spinner
         thatMyApp.loading = false;
 
+
+
         _this.restaurants = response.data.results;
+
+        _this.restaurants.map(function(rest) {
+          if (rest.photos) {
+            const photo = rest.photos[0].photo_reference;
+
+            if (photo) {
+              rest.photo = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=' + photo + '&key=' + myAPIKey;
+            }
+          }
+
+          if (!rest.photo) {
+            rest.photo = '/images/noimage.jpg';
+          }
+        });
+
         console.log(_this.restaurants);
+
       }, function errorCallback(error) {
         thatMyApp.loading = false;
 
-        _this.error = 'Something happened :S'
+        _this.error = 'Something happened (maybe CORS not enabled)'
       });
     });
   }
@@ -68,9 +87,7 @@ export default angular.module(name, [
   controllerAs: name,
   controller: Home
 })
-.config(config);
-
-function config($stateProvider) {
+.config(function($stateProvider) {
   'ngInject';
 
   $stateProvider.state(name, {
@@ -80,12 +97,12 @@ function config($stateProvider) {
     // if we would be logged with our user we would be redirected to other route
     resolve: {
       currentUser($q) {
-         if (Meteor.userId() !== null) {
-           return $q.reject('AUTH_REQUIRED');
-         } else {
-           return $q.resolve();
-         }
+        if (Meteor.userId() !== null) {
+          return $q.reject('AUTH_REQUIRED');
+        } else {
+          return $q.resolve();
+        }
       }
     }
   });
-}
+});

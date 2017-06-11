@@ -86,20 +86,5 @@ export default angular.module(name, [
     $translateProvider
         .preferredLanguage(savedLang)
         .useSanitizeValueStrategy(null);
-})
-.directive('fallbackSrc', function () {
-    // you can create directives as normally. Doing this here means that your directive will be available
-    // through all different controllers being this the global one
-
-    // to test this one add this on your template: <img src="http:www.idontexist" fallbackSrc />
-    const fallbackSrc = {
-        link: function postLink($scope, element, attrs) {
-            element.bind('error', function() {
-                const classes = angular.element(this).attr('class');
-                angular.element(this).attr({'src':'/images/not_loaded.svg', 'class':classes + ' not-loaded'});
-            });
-        }
-    };
-    return fallbackSrc;
 });
 

@@ -2,7 +2,7 @@
 
 <div class="rest" ng-repeat="rest in home.restaurants" ng-if="!home.noGeolocation">
     <img class="close" src="/images/close.svg" ng-if="rest.opening_hours.open_now" />
-    <img class="pic" src="/images/not_loaded.svg" />
+    <img class="pic" ng-src="{{rest.photo}}" />
     <ul class="info">
         <li class="title">{{rest.name}}</li>
         <li class="rating-price">

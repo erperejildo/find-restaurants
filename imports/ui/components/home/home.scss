@@ -17,7 +17,7 @@ home {
     padding: $gap;
     cursor: pointer;
     @include border-radius(0, 0, toRem(5), toRem(5));
-    @extend .shadow1;
+    @extend .shadow2;
   }
 
   .no-support {
@@ -43,6 +43,8 @@ home {
 
   .pic {
     width: 100%;
+    border-bottom: toRem(3) solid $color2;
+    display: block;
   }
 
   .info {
