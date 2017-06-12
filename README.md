@@ -1,5 +1,5 @@
 # find-restaurants
-Find restaurants 1.5km near you.
+Find restaurants 1.5km around you and see the route on the map with your GPS.
 
 ## Set up
 
