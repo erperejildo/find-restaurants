@@ -2,12 +2,13 @@
 Find restaurants 1.5km near you.
 
 ## Set up
-
 - Download Meteor: https://www.meteor.com/install
 - Install dependencies `npm install`
 - Run the project either with `meteor run` (first time will take a while)
 <br>You also can run the project directly on your phone with `meteor run android-device` (also available for IOS but not tested)
-- To avoid CORS isues install this extension on Chrome (or similar one on different browser): https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+- To avoid CORS issues install this extension on Chrome (or similar one on different browser): https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+- In order to use Google APIs you will need to use an API key. If you do not have one go here: https://developers.google.com/maps/documentation/javascript/get-api-key <br>
+You will also need to add this new key in `home.js` a and `index.html`
 
 ## Build
 If you only want to build the project (not deploy it) just run:

@@ -37,7 +37,7 @@ class Home {
     this.getUserPos();
 
     this.promise.then(function() {
-      const myAPIKey = 'AIzaSyAJ0yKxvw6xtX8moGnG_73ZNx51NyucbKc';
+      const myAPIKey = '';
 
       // Method 1: getting info from Google using Google Map Web Services
       _http({
