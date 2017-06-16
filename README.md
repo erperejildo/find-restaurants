@@ -1,5 +1,7 @@
 # find-restaurants
-Find restaurants 1.5km around you and see the route on the map with your GPS.
+Find restaurants 1.5km around you and see the route on the map with your GPS.<br>
+This project can be used also to make routes for hotels, tubes stations and other different places, just change the API parameters.<br>
+This can be also reusabled by other apps which require different components using the same skeleton and the CSS library.
 
 ## Set up
 - Download Meteor: https://www.meteor.com/install
